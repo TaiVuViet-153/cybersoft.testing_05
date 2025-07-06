@@ -27,30 +27,31 @@ public class SearchAdmin {
             System.out.println("Vào được màn hình Admin thành công");
 
             // Tìm ô input để nhập dữ liệu search
-            driver.findElement(By.xpath("//label[text()=\"Username\"]/../following-sibling::div/input")).sendKeys("admin");
+//            driver.findElement(By.xpath("//label[text()=\"Username\"]/../following-sibling::div/input")).sendKeys("admin");
             driver.findElement(By.xpath("//button[@type=\"submit\"]")).click();
             Thread.sleep(5000);
             System.out.println("Đã ấn tìm kiếm");
 
             // Lấy danh sách
-            List<WebElement> rows = driver.findElements(By.cssSelector(".oxd-table-body")); // Tạo ra mảng
+            List<WebElement> rows = driver.findElements(By.cssSelector("//div[@class=\"oxd-table-body\"]/div")); // Tạo ra mảng
             // Đặt cờ
             boolean userFound = false; // không tìm thấy
             // Tạo vòng lặp lấy dữ liệu từng dòng
             for (WebElement row : rows) {
                 String userFind = row.findElement(By.xpath("//div[@role=\"cell\"][2]/div")).getText();
-                if (userFind.equalsIgnoreCase("Admin")) {
-                    userFound = true;
-                    break; // Dừng vòng lặp
-                }
+//                if (userFind.equalsIgnoreCase("Admin")) {
+//                    userFound = true;
+//                    break; // Dừng vòng lặp
+//                }
+                System.out.println(userFind);
             }
 
             // Kiểm tra xem đã tìm thấy user hay chưa
-            if (userFound) {
-                System.out.println("Tìm thấy user");
-            } else {
-                System.out.println("Không tìm thấy user");
-            }
+//            if (userFound) {
+//                System.out.println("Tìm thấy user");
+//            } else {
+//                System.out.println("Không tìm thấy user");
+//            }
 
         } catch (Exception e) {
             System.out.println("Lỗi " + e.getMessage());
